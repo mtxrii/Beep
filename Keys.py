@@ -1,4 +1,5 @@
 txt_to_beep = {
+    # Letters
     'A': 'bop beep boop',
     'B': 'bop boop beep beep beep',
     'C': 'bop boop beep boop beep',
@@ -50,5 +51,28 @@ txt_to_beep = {
     'w': 'beep boop boop',
     'x': 'boop beep beep boop',
     'y': 'boop beep boop boop',
-    'z': 'boop boop beep beep'
+    'z': 'boop boop beep beep',
+    # Numbers
+    '0': 'boop boop boop boop boop',
+    '1': 'beep boop boop boop boop',
+    '2': 'beep beep boop boop boop',
+    '3': 'beep beep beep boop boop',
+    '4': 'beep beep beep beep boop',
+    '5': 'beep beep beep beep beep',
+    '6': 'boop beep beep beep beep',
+    '7': 'boop boop beep beep beep',
+    '8': 'boop boop boop beep beep',
+    '9': 'boop boop boop boop beep',
+    # Tokens
+    '{': 'beep bop',
+    '}': 'boop bop',
+    '[': 'beep beep bop',
+    ']': 'boop boop bop',
+    '(': 'boop beep bop',
+    ')': 'beep boop bop',
+    '.': 'bop beep bop',
+    ',': 'bop boop bop',
+    ';': 'beep bop beep',
+    ':': 'boop bop boop',
+    '|': '~//',
 }
