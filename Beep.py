@@ -1,7 +1,7 @@
 import sys
 
-from .Keys import txt_to_beep
-from .Keys import beep_to_txt
+from Keys import txt_to_beep
+from Keys import beep_to_txt
 
 separator = '+------------------------------------------------------------------------------------------------------+'
 filename_in = ''
@@ -16,6 +16,7 @@ def decoded(file, bb=False):
     try:
         opened_file = open(file, 'r')
     except IOError:
+        print(separator)
         sys.exit("[Error]: '" + file + "' could not be found. Exiting...")
 
     if bb:
@@ -36,7 +37,7 @@ def decoded(file, bb=False):
             prepared = ''
             for char in line:
                 if char == ' ':
-                    prepared += ' | '
+                    prepared += '| '
                 elif char in txt_to_beep.keys():
                     prepared += txt_to_beep[char] + ', '
                 else:
@@ -56,7 +57,7 @@ while True:
         filename_in = input('File to translate -> ')
         filename_out = input('File to output translation -> ')
 
-        print('\n Decoding file...')
+        print('\nDecoding file...')
         with open(filename_out, 'w') as out:
             for line in decoded(filename_in, bb=True):
                 out.write(line)
@@ -67,9 +68,17 @@ while True:
 
     elif cmd == 'WRITE':
         filename_in = input('File to encode -> ')
-        filename_out = input('File to output encoding -> ')
+        filename_out = input('File to output encoding -> ') + '.bb'
+
+        print('\nEncoding file...')
+        with open(filename_out, 'w') as out:
+            for line in decoded(filename_in, bb=False):
+                out.write(line)
+            out.write('\n')
+
+        print(separator + "\nDone! Check out '" + filename_out + "'")
         break
 
     else:
-        print(separator + '\n[Error]: Unknwon command. Exiting...')
-        break
+        print(separator)
+        sys.exit('[Error]: Unknwon command. Exiting...')
