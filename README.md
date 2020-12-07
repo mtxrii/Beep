@@ -1,6 +1,6 @@
 > "Programming? All you ever do on that laptop is boop beeps. Beeps bops and boops"
 >
-> Fine then. You wanna see a screen full of beeps boops?
+> Fine then. You wanna see a screen full of beep boops?
 
 # Beep
 A fun little novelty text encoder/decoder
