@@ -3,6 +3,7 @@ import sys
 from .Keys import txt_to_beep
 from .Keys import beep_to_txt
 
+separator = '+------------------------------------------------------------------------------------------------------+'
 filename_in = ''
 filename_out = ''
 
@@ -38,6 +39,8 @@ def decoded(file, bb=False):
                     prepared += ' | '
                 elif char in txt_to_beep.keys():
                     prepared += txt_to_beep[char] + ', '
+                else:
+                    prepared += char
             yield prepared
 
     opened_file.close()
@@ -46,19 +49,27 @@ while True:
     print("Hello. Welcome to Beep. This program reads from and writes to .bb files. If you choose to write, it will\n"
           "take any text file and convert it to a .bb file. If you choose to read, it will take any .bb file and\n"
           "translate it to a .txt file.")
-    print("+------------------------------------------------------------------------------------------------------+")
+    print(separator)
     cmd = input('(Read|Write) -> ').upper()
 
     if cmd == 'READ':
         filename_in = input('File to translate -> ')
         filename_out = input('File to output translation -> ')
 
+        print('\n Decoding file...')
+        with open(filename_out, 'w') as out:
+            for line in decoded(filename_in, bb=True):
+                out.write(line)
+            out.write('\n')
+
+        print(separator + "\nDone! Check out '" + filename_out + "'")
+        break
 
     elif cmd == 'WRITE':
         filename_in = input('File to encode -> ')
         filename_out = input('File to output encoding -> ')
+        break
 
     else:
-        print('+------------------------------------------------------------------------------------------------------+\n'
-              '[Error]: Unknwon command. Exiting...')
+        print(separator + '\n[Error]: Unknwon command. Exiting...')
         break
