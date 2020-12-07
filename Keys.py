@@ -75,6 +75,7 @@ txt_to_beep = {
     ';': 'beep bop beep',
     ':': 'boop bop boop',
     '|': '~//',
+    ' ': '|'
 }
 
 beep_to_txt = {
