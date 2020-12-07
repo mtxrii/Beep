@@ -61,20 +61,21 @@ while True:
         with open(filename_out, 'w') as out:
             for line in decoded(filename_in, bb=True):
                 out.write(line)
-            out.write('\n')
+                out.write('\n')
 
         print(separator + "\nDone! Check out '" + filename_out + "'")
         break
 
     elif cmd == 'WRITE':
         filename_in = input('File to encode -> ')
-        filename_out = input('File to output encoding -> ') + '.bb'
+        filename_out = input('File to output encoding -> ')
+        if '.bb' not in filename_out:
+            filename_out += '.bb'
 
         print('\nEncoding file...')
         with open(filename_out, 'w') as out:
             for line in decoded(filename_in, bb=False):
                 out.write(line)
-            out.write('\n')
 
         print(separator + "\nDone! Check out '" + filename_out + "'")
         break
